@@ -55,7 +55,7 @@ The install has determined there is no supported GPU so the model will be run on
 
 # Run the model.
 
-The smallest version of [DeepSeek](https://github.com/deepseek-ai) R1 model can no be run.  
+The smallest version of [DeepSeek](https://github.com/deepseek-ai) R1 model can now be run.  
 This step downloads the model (1.1GiB) first.
 ```bash
 ollama run deepseek-r1:1.5b
