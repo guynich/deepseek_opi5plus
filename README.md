@@ -14,7 +14,7 @@ No user login nor registration is needed for the following steps.
 I used a single board computer rather like a Raspberry Pi.
 
 [OrangePi 5 Plus](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-5-plus.html) 
-* RK3588S SOC (ARM)
+* RK3588 SOC (ARM)
 * 16GB RAM
 * 1TB SSD
 
@@ -184,3 +184,4 @@ Type `ctrl + d` to quit.
 * [ ] Check if all CPU cores are being used.
 * [ ] Try more reasoning problems.
 * [ ] Try larger size DeepSeek R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
+* [ ] Try single board computer with lower cost RK3588S chip (~100USD).
