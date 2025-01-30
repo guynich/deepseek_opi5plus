@@ -6,6 +6,7 @@ No user login nor registration is needed for the following steps.
 - [Install ollama](#install-ollama)
 - [Run the model.](#run-the-model)
 - [A simple problem](#a-simple-problem)
+- [Benchmarking](#benchmarking)
 - [References](#references)
 - [Next steps](#next-steps)
 
@@ -13,7 +14,7 @@ No user login nor registration is needed for the following steps.
 
 I used a single board computer rather like a Raspberry Pi.
 
-[OrangePi 5 Plus](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-5-plus.html) 
+[OrangePi 5 Plus](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-5-plus.html)
 * RK3588 SOC (ARM)
 * 16GB RAM
 * 1TB SSD
@@ -24,8 +25,9 @@ Software
 
 # Install ollama
 
-This step installs `ollama` using a script command from [link](https://ollama.com/download/linux).  This was my 
-first time using ollama to run an ML model.  Open Ubuntu Terminal and run this command.
+This step installs `ollama` using a script command from 
+[link](https://ollama.com/download/linux).  This was my first time using ollama 
+to run an ML model.  Open Ubuntu Terminal and run this command.
 ```bash
 cd
 curl -fsSL https://ollama.com/install.sh | sh
@@ -55,8 +57,8 @@ The install has determined there is no supported GPU so the model will be run on
 
 # Run the model.
 
-The smallest version of [DeepSeek](https://github.com/deepseek-ai) R1 model can now be run.  
-This step downloads the model (1.1GiB) first.
+The smallest version of [DeepSeek](https://github.com/deepseek-ai) R1 model can 
+now be run.  This step downloads the model (1.1GiB) first.
 ```bash
 ollama run deepseek-r1:1.5b
 ```
@@ -124,7 +126,9 @@ SOFTWARE.
 
 # A simple problem
 
-You can now write a natural language prompt and watch the model reason and generate an answer.  For example here is a simple mathematics problem to sum 3 and 2.
+You can now write a natural language prompt and watch the model reason and 
+generate an answer.  For example here is a simple mathematics problem to sum 
+3 and 2.
 ```bash
 >>> What is the sum of 3 + 2 ?
 <think>
@@ -170,10 +174,15 @@ To solve the addition problem \(3 + 2\), follow these steps:
 >>> Send a message (/? for help)
 ```
 
-The text between `<think>` and `</think>` shows the "reasoning" of the model as it examines the problem.  It has
-produced the expected numerical result `5`.
+The text between `<think>` and `</think>` shows the "reasoning" of the model as 
+it examines the problem.  It has produced the expected numerical result `5`.
 
 Type `ctrl + d` to quit.
+
+# Benchmarking
+
+The model running on OrangePi 5 Plus generates 7.8 tokens per second in
+[this test](/benchmark/README.md).
 
 # References
 
@@ -181,7 +190,8 @@ Type `ctrl + d` to quit.
 
 # Next steps
 
-* [ ] Check if all CPU cores are being used.
+* [x] Check if all CPU cores are being used.
+* [x] Quantify tokens per second.
 * [ ] Try more reasoning problems.
 * [ ] Try larger size DeepSeek R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 * [ ] Try single board computer with lower cost RK3588S chip (~100USD).
