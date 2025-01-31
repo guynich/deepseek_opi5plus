@@ -22,10 +22,14 @@ cd
 git clone git@github.com:guynich/deepseek_opi5plus
 ```
 
-Next create a virtual environment called `venv_ollama` and install Python 
+Next create a Python virtual environment called `venv_ollama` and install
 packages.
 ```bash
 cd
+
+sudo apt update
+sudo apt install python3.10-venv
+
 python3 -m venv venv_ollama
 source ./venv_ollama/bin/activate
 
