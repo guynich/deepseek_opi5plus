@@ -16,7 +16,14 @@ curl -fsSL https://ollama.com/install.sh | sh
 ollama pull deepseek-r1:1.5b
 ```
 
-Next createand activate a virtual environment called `venv_ollama`.
+Clone this repo from GitHub.
+```bash
+cd
+git clone git@github.com:guynich/deepseek_opi5plus
+```
+
+Next create a virtual environment called `venv_ollama` and install Python 
+packages.
 ```bash
 cd
 python3 -m venv venv_ollama
@@ -31,7 +38,7 @@ In this section we run the benchmark script to see the model speed expressed in
 tokens per second.
 ```bash
 cd
-cd python3 deepseek_opi5plus/benchmark
+cd deepseek_opi5plus/benchmark
 
 python3 main.py
 ```
