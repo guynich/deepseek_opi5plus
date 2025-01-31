@@ -182,7 +182,13 @@ Type `ctrl + d` to quit.
 # Benchmarking
 
 The model running on OrangePi 5 Plus generates 7.8 tokens per second in
-[this test](/benchmark/README.md).
+[this test](/benchmark/README.md).  I also ran the same test on a lower cost 
+board (different CPU, less RAM) which ran about 10% slower.
+
+| Board           | CPU     | Tokens per second | Other    |
+| --------------- | ------- | ----------------- | -------- |
+| OrangePi 5 Plus | RK3588  | 7.8               | 16GB RAM |
+| OrangePi 5      | RK3588S | 7.0               | 8GB RAM  |
 
 # References
 
@@ -192,6 +198,7 @@ The model running on OrangePi 5 Plus generates 7.8 tokens per second in
 
 * [x] Check if all CPU cores are being used.
 * [x] Quantify tokens per second.
+* [x] Try OrangePi 5 single board computer with lower cost RK3588S chip and less memory(~100USD retail).
 * [ ] Try more reasoning problems.
 * [ ] Try larger size DeepSeek R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
-* [ ] Try single board computer with lower cost RK3588S chip (~100USD).
+
