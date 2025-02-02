@@ -12,12 +12,19 @@ No user login nor registration is needed for the following steps.
 
 # SBC hardware and setup
 
-I used a single board computer rather like a Raspberry Pi.
+I tested several single board computers rather like Raspberry Pi.
 
-[OrangePi 5 Plus](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-5-plus.html)
+[OrangePi 5 Plus](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5-plus.html)
+* ~150USD retail
 * RK3588 SOC (ARM)
 * 16GB RAM
 * 1TB SSD
+
+[OrangePi 5](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5.html)
+* ~100USD retail
+* RK3588S SOC (ARM)
+* 8GB RAM
+* 250GB SSD
 
 Software
 * Ubuntu 22.04.5 LTS
@@ -25,8 +32,8 @@ Software
 
 # Install ollama
 
-This step installs `ollama` using a script command from 
-[link](https://ollama.com/download/linux).  This was my first time using ollama 
+This step installs `ollama` using a script command from
+[link](https://ollama.com/download/linux).  This was my first time using ollama
 to run an ML model.  Open Ubuntu Terminal and run this command.
 ```bash
 cd
@@ -37,7 +44,7 @@ Result.
 ```bash
 orangepi@orangepi-plus:~$ curl -fsSL https://ollama.com/install.sh | sh
 >>> Installing ollama to /usr/local
-[sudo] password for orangepi: 
+[sudo] password for orangepi:
 >>> Downloading Linux arm64 bundle
 #############################################################             85.2%
 ######################################################################## 100.0%
@@ -51,13 +58,13 @@ Created symlink /etc/systemd/system/default.target.wants/ollama.service → /etc
 >>> The Ollama API is now available at 127.0.0.1:11434.
 >>> Install complete. Run "ollama" from the command line.
 WARNING: No NVIDIA/AMD GPU detected. Ollama will run in CPU-only mode.
-orangepi@orangepi-plus:~$ 
+orangepi@orangepi-plus:~$
 ```
 The install has determined there is no supported GPU so the model will be run on CPU only.
 
 # Run the model.
 
-The smallest version of [DeepSeek](https://github.com/deepseek-ai) R1 model can 
+The smallest version of [DeepSeek](https://github.com/deepseek-ai) R1 model can
 now be run.  This step downloads the model (1.1GiB) first.
 ```bash
 ollama run deepseek-r1:1.5b
@@ -66,37 +73,42 @@ ollama run deepseek-r1:1.5b
 Result is a command prompt.
 ```bash
 orangepi@orangepi-plus:~$ ollama run deepseek-r1:1.5b
-pulling manifest 
-pulling aabd4debf0c8... 100% ▕███████████████████████████████████████████████████████████████████████████████▏ 1.1 GB                         
-pulling 369ca498f347... 100% ▕███████████████████████████████████████████████████████████████████████████████▏  387 B                         
-pulling 6e4c38e1172f... 100% ▕███████████████████████████████████████████████████████████████████████████████▏ 1.1 KB                         
-pulling f4d24e9138dd... 100% ▕███████████████████████████████████████████████████████████████████████████████▏  148 B                         
-pulling a85fe2a2e58e... 100% ▕███████████████████████████████████████████████████████████████████████████████▏  487 B                         
-verifying sha256 digest 
-writing manifest 
-success 
+pulling manifest
+pulling aabd4debf0c8... 100% ▕███████████████████████████████████████████████████████████████████████████████▏ 1.1 GB
+pulling 369ca498f347... 100% ▕███████████████████████████████████████████████████████████████████████████████▏  387 B
+pulling 6e4c38e1172f... 100% ▕███████████████████████████████████████████████████████████████████████████████▏ 1.1 KB
+pulling f4d24e9138dd... 100% ▕███████████████████████████████████████████████████████████████████████████████▏  148 B
+pulling a85fe2a2e58e... 100% ▕███████████████████████████████████████████████████████████████████████████████▏  487 B
+verifying sha256 digest
+writing manifest
+success
 >>> Send a message (/? for help)
 ```
 
-We can see model information and MIT licence by typing `/show info` and `/show license`.
+We can see model information and MIT licence by typing `/show info` and
+`/show license`.  The model uses 4-bit quantization same as the LLM that we
+used on a project called
+[AI in Box](https://github.com/usefulsensors/ai_in_a_box#quick-start) at
+Useful Sensors.  At Google I worked on quantizing ML models with 4-bits of
+weight precision.
 ```bash
 >>> /show info
   Model
-    architecture        qwen2     
-    parameters          1.8B      
-    context length      131072    
-    embedding length    1536      
-    quantization        Q4_K_M    
+    architecture        qwen2
+    parameters          1.8B
+    context length      131072
+    embedding length    1536
+    quantization        Q4_K_M
 
   Parameters
-    stop    "<｜begin▁of▁sentence｜>"    
-    stop    "<｜end▁of▁sentence｜>"      
-    stop    "<｜User｜>"                 
-    stop    "<｜Assistant｜>"            
+    stop    "<｜begin▁of▁sentence｜>"
+    stop    "<｜end▁of▁sentence｜>"
+    stop    "<｜User｜>"
+    stop    "<｜Assistant｜>"
 
   License
-    MIT License                    
-    Copyright (c) 2023 DeepSeek    
+    MIT License
+    Copyright (c) 2023 DeepSeek
 
 >>> /show license
 MIT License
@@ -126,18 +138,18 @@ SOFTWARE.
 
 # A simple problem
 
-You can now write a natural language prompt and watch the model reason and 
-generate an answer.  For example here is a simple mathematics problem to sum 
+You can now write a natural language prompt and watch the model reason and
+generate an answer.  For example here is a simple mathematics problem to sum
 3 and 2.
 ```bash
 >>> What is the sum of 3 + 2 ?
 <think>
-Okay, let's tackle this problem step by step. I'm trying to find the sum of 3 plus 2. 
+Okay, let's tackle this problem step by step. I'm trying to find the sum of 3 plus 2.
 
-First, I need to understand what addition means. Addition is like combining two numbers to get a total. So, when I see "3 + 2," 
+First, I need to understand what addition means. Addition is like combining two numbers to get a total. So, when I see "3 + 2,"
 it means I have three items and I add two more items to them.
 
-Let me visualize this: imagine I have 3 apples. If I take another 2 apples, how many apples do I have in total? 
+Let me visualize this: imagine I have 3 apples. If I take another 2 apples, how many apples do I have in total?
 
 Adding 1 apple to my 3 apples gives me 4 apples.
 Adding another apple brings the total to 5 apples.
@@ -174,7 +186,7 @@ To solve the addition problem \(3 + 2\), follow these steps:
 >>> Send a message (/? for help)
 ```
 
-The text between `<think>` and `</think>` shows the "reasoning" of the model as 
+The text between `<think>` and `</think>` shows the "reasoning" of the model as
 it examines the problem.  It has produced the expected numerical result `5`.
 
 Type `ctrl + d` to quit.
@@ -182,8 +194,8 @@ Type `ctrl + d` to quit.
 # Benchmarking
 
 The model running on OrangePi 5 Plus generates 7.8 tokens per second in
-[this test](/benchmark/README.md).  I also ran the same test on a lower cost 
-board (different CPU, less RAM) which ran about 10% slower.
+[this test](/benchmark/README.md).  I also ran the same test on lower cost
+OrangePi 5 board (different CPU, less RAM) which ran about 10% slower.
 
 | Board           | CPU     | Tokens per second | Other    |
 | --------------- | ------- | ----------------- | -------- |
