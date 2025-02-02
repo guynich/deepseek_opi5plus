@@ -210,7 +210,8 @@ OrangePi 5 board (different CPU, less RAM) which ran about 10% slower.
 
 * [x] Check if all CPU cores are being used.
 * [x] Quantify tokens per second.
-* [x] Try OrangePi 5 single board computer with lower cost RK3588S chip and less memory(~100USD retail).
+* [x] Try OrangePi 5 single board computer with lower cost RK3588S chip and less memory (~100USD retail).
+* [ ] Try OrangePi 3B single board computer (~50 USD retail with 4GB RAM)
 * [ ] Try more reasoning problems.
 * [ ] Try larger size DeepSeek R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 
