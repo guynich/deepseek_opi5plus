@@ -189,7 +189,11 @@ To solve the addition problem \(3 + 2\), follow these steps:
 The text between `<think>` and `</think>` shows the "reasoning" of the model as
 it examines the problem.  It has produced the expected numerical result `5`.
 
-Type `ctrl + d` to quit.
+The session will retain information from earlier questions.  So if you ask a follow-up question, such as 
+"repeat the sum but first add +1 to both numbers", the model will recall the original numbers from the
+previous question during reasoning before providing the correct answer "7".
+
+Type `ctrl + d` to quit.  In my testing the memory of previous questions is not retained after quitting.
 
 # Benchmarking
 
