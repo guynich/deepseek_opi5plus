@@ -67,8 +67,8 @@ The install has determined there is no supported GPU so the model will be run on
 
 # Run the model.
 
-The smallest version of [DeepSeek](https://github.com/deepseek-ai) R1 model can
-now be run.  This step downloads the model (1.1GiB) first.
+The smallest distilled version of [DeepSeek](https://github.com/deepseek-ai) R1 model can
+now be run on this single board computer.  This step downloads the model (1.1GiB) first.
 ```bash
 ollama run deepseek-r1:1.5b
 ```
@@ -89,8 +89,9 @@ success
 ```
 
 We can see model information and MIT licence by typing `/show info` and
-`/show license`.  The model uses 4-bit quantization same as the LLM that we
-used on a project called
+`/show license`.  This distilled model is based on Alibaba Cloud's Qwen
+team's model architecture and trained weights.  It uses 4-bit quantization 
+same as the LLM that we used on a project called
 [AI in Box](https://github.com/usefulsensors/ai_in_a_box#quick-start) at
 Useful Sensors.  At Google I worked on quantizing ML models with 4-bits of
 weight precision.
@@ -190,12 +191,30 @@ To solve the addition problem \(3 + 2\), follow these steps:
 ```
 
 The text between `<think>` and `</think>` shows the "reasoning" of the model as
-it examines the problem.  It has produced the expected numerical result `5`.
+it examines the problem.  It has produced the expected numerical result `5`.  
 
-The session will retain information from earlier questions.  So if you ask a
-follow-up question, such as "repeat the sum but first add +1 to both numbers",
+The model generated answer has text formatting which is not rendered in my block
+above.  The answer is duplicated here with an indent to show the formatting.
+
+> To solve the addition problem \(3 + 2\), follow these steps:
+> 
+> 1. **Identify the numbers being added:**
+>   - The first number is **3**.
+>   - The second number is **2**.
+>
+> 2. **Add the two numbers together:**
+>    \[
+>    3 + 2 = 5
+>    \]
+> 
+> 3. **Conclusion:**
+>    - The sum of \(3\) and \(2\) is **5**.
+
+The session retains information from earlier questions for context.  So if 
+you ask a follow-up question, such as 
+`repeat the sum but first add +1 to both numbers`,
 the model will recall the original numbers from the previous question during
-reasoning before providing the correct answer "7".
+reasoning before providing the correct answer `7`.
 
 Type `ctrl + d` to quit.  In my testing the memory of previous questions is not
 retained after quitting.
@@ -247,7 +266,8 @@ cd
 cd deepseek_opi5plus/benchmark
 python3 main.py
 ```
-Results are shown in the [benchmark folder README](/benchmark/README.md).
+The complete script results are shown in the 
+[benchmark folder README](/benchmark/README.md).
 
 The model running on OrangePi 5 Plus generates 7.8 tokens per second.  I also
 ran the same test on lower cost OrangePi 5 board (different CPU, less RAM) which
@@ -260,13 +280,14 @@ ran about 10% slower.
 
 ## Chat
 
-In this example several prompts with context are passed to the model.
+In this example several stored prompts with context are passed to the model.
 ```bash
 cd
 cd deepseek_opi5plus/chat
 python3 main.py
 ```
-Results of the model reasoing are shown in the
+The model generates reasoning and answers with context. The complete script 
+results are shown in the
 [chat folder README](/chat/README.md#result).
 
 # References
