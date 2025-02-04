@@ -5,8 +5,11 @@ No user login nor registration is needed for the following steps.
 - [SBC hardware and setup](#sbc-hardware-and-setup)
 - [Install ollama](#install-ollama)
 - [Run the model.](#run-the-model)
-- [A simple problem](#a-simple-problem)
-- [Benchmarking](#benchmarking)
+  - [A simple problem](#a-simple-problem)
+- [Examples](#examples)
+  - [Installation](#installation)
+  - [Benchmarking](#benchmarking)
+  - [Chat](#chat)
 - [References](#references)
 - [Next steps](#next-steps)
 
@@ -136,7 +139,7 @@ SOFTWARE.
 >>> Send a message (/? for help)
 ```
 
-# A simple problem
+## A simple problem
 
 You can now write a natural language prompt and watch the model reason and
 generate an answer.  For example here is a simple mathematics problem to sum
@@ -189,22 +192,82 @@ To solve the addition problem \(3 + 2\), follow these steps:
 The text between `<think>` and `</think>` shows the "reasoning" of the model as
 it examines the problem.  It has produced the expected numerical result `5`.
 
-The session will retain information from earlier questions.  So if you ask a follow-up question, such as 
-"repeat the sum but first add +1 to both numbers", the model will recall the original numbers from the
-previous question during reasoning before providing the correct answer "7".
+The session will retain information from earlier questions.  So if you ask a
+follow-up question, such as "repeat the sum but first add +1 to both numbers",
+the model will recall the original numbers from the previous question during
+reasoning before providing the correct answer "7".
 
-Type `ctrl + d` to quit.  In my testing the memory of previous questions is not retained after quitting.
+Type `ctrl + d` to quit.  In my testing the memory of previous questions is not
+retained after quitting.
 
-# Benchmarking
+# Examples
 
-The model running on OrangePi 5 Plus generates 7.8 tokens per second in
-[this test](/benchmark/README.md).  I also ran the same test on lower cost
-OrangePi 5 board (different CPU, less RAM) which ran about 10% slower.
+This section describes several examples using Ollama's Python API.
+
+## Installation
+
+In this section python requirements are installed.
+
+First check ollama is installed as described above.
+```bash
+cd
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Make DeepSeek model version "1.5b" available.
+```bash
+ollama pull deepseek-r1:1.5b
+```
+
+Clone this repo from GitHub.
+```bash
+cd
+git clone git@github.com:guynich/deepseek_opi5plus
+```
+
+Next create a Python virtual environment called `venv_ollama` and install
+packages.
+```bash
+sudo apt update
+sudo apt install python3.10-venv
+
+cd
+python3 -m venv venv_ollama
+source ./venv_ollama/bin/activate
+
+python3 -m pip install -r deepseek_opi5plus/requirements.txt
+```
+
+## Benchmarking
+
+The speed of this model on a computer can be quantified with counting [the
+number tokens generated per second](/benchmark/README.md).
+```bash
+cd
+cd deepseek_opi5plus/benchmark
+python3 main.py
+```
+Results are shown in the [benchmark folder README](/benchmark/README.md).
+
+The model running on OrangePi 5 Plus generates 7.8 tokens per second.  I also
+ran the same test on lower cost OrangePi 5 board (different CPU, less RAM) which
+ran about 10% slower.
 
 | Board           | CPU     | Tokens per second | Other    |
 | --------------- | ------- | ----------------- | -------- |
 | OrangePi 5 Plus | RK3588  | 7.8               | 16GB RAM |
 | OrangePi 5      | RK3588S | 7.0               | 8GB RAM  |
+
+## Chat
+
+In this example several prompts with context are passed to the model.
+```bash
+cd
+cd deepseek_opi5plus/chat
+python3 main.py
+```
+Results of the model reasoing are shown in the
+[chat folder README](/chat/README.md#result).
 
 # References
 
@@ -216,6 +279,6 @@ OrangePi 5 board (different CPU, less RAM) which ran about 10% slower.
 * [x] Quantify tokens per second.
 * [x] Try OrangePi 5 single board computer with lower cost RK3588S chip and less memory (~100USD retail).
 * [ ] Try OrangePi 3B single board computer (~50 USD retail with 4GB RAM)
-* [ ] Try more reasoning problems.
+* [x] Try more reasoning examples.
 * [ ] Try larger size DeepSeek R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 

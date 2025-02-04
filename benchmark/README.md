@@ -6,35 +6,7 @@ tokens generated per second.
 
 # Installation
 
-In this section python requirements for ollama are installed.
-
-First check ollama is installed and the DeepSeek model version "1.5b" is
-available.  You may have done this in the folder above.
-```bash
-cd
-curl -fsSL https://ollama.com/install.sh | sh
-ollama pull deepseek-r1:1.5b
-```
-
-Clone this repo from GitHub.
-```bash
-cd
-git clone git@github.com:guynich/deepseek_opi5plus
-```
-
-Next create a Python virtual environment called `venv_ollama` and install
-packages.
-```bash
-cd
-
-sudo apt update
-sudo apt install python3.10-venv
-
-python3 -m venv venv_ollama
-source ./venv_ollama/bin/activate
-
-python3 -m pip install -r deepseek_opi5plus/benchmark/requirements.txt
-```
+Follow the steps in the [top level README](/README.md#installation).
 
 # Run the benchmark
 
@@ -42,6 +14,8 @@ In this section we run the benchmark script to see the model speed expressed in
 tokens per second.
 ```bash
 cd
+source ./venv_ollama/bin/activate
+
 cd deepseek_opi5plus/benchmark
 
 python3 main.py
