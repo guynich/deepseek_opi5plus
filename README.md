@@ -88,13 +88,11 @@ success
 >>> Send a message (/? for help)
 ```
 
-We can see model information and MIT licence by typing `/show info` and
-`/show license`.  This distilled model is based on Alibaba Cloud's Qwen
-team's model architecture and trained weights.  It uses 4-bit quantization 
-same as the LLM that we used on a project called
-[AI in Box](https://github.com/usefulsensors/ai_in_a_box#quick-start) at
-Useful Sensors.  At Google I worked on quantizing ML models with 4-bits of
-weight precision.
+We can see model information and licence by typing `/show info` and
+`/show license`.  
+* It is shared using the permissive open-source software MIT license.
+* This distilled model is based on Alibaba Cloud's Qwen team's model architecture and trained weights.
+* It uses 4-bit quantization same as the LLM that we used on a project called [AI in Box](https://github.com/usefulsensors/ai_in_a_box#quick-start) at Useful Sensors.  At Google I worked on quantizing ML models with 4-bits of weight precision with great results.
 ```bash
 >>> /show info
   Model
@@ -193,8 +191,9 @@ To solve the addition problem \(3 + 2\), follow these steps:
 The text between `<think>` and `</think>` shows the "reasoning" of the model as
 it examines the problem.  It has produced the expected numerical result `5`.  
 
-The model generated answer has text formatting which is not rendered in my block
-above.  The answer is duplicated here with an indent to show the formatting.
+The model generated answer has several types of text formatting (Markdown, LaTeX) 
+which are not rendered in my block above.  The answer is duplicated here with an 
+indent to demonstrate the Markdown formatting.
 
 > To solve the addition problem \(3 + 2\), follow these steps:
 > 
@@ -221,11 +220,11 @@ retained after quitting.
 
 # Examples
 
-This section describes several examples using Ollama's Python API.
+This section describes DeepSeek R1 model examples using Ollama's Python API.
 
 ## Installation
 
-In this section python requirements are installed.
+In this section python requirements are installed for running the examples.
 
 First check ollama is installed as described above.
 ```bash
@@ -259,8 +258,8 @@ python3 -m pip install -r deepseek_opi5plus/requirements.txt
 
 ## Benchmarking
 
-The speed of this model on a computer can be quantified with counting [the
-number tokens generated per second](/benchmark/README.md).
+The speed of this model version on a computer can be quantified with counting 
+[the number of tokens generated per second](/benchmark/README.md).
 ```bash
 cd
 cd deepseek_opi5plus/benchmark
@@ -269,7 +268,7 @@ python3 main.py
 The complete script results are shown in the 
 [benchmark folder README](/benchmark/README.md).
 
-The model running on OrangePi 5 Plus generates 7.8 tokens per second.  I also
+The "1.5B" model running on OrangePi 5 Plus generates 7.8 tokens per second.  I also
 ran the same test on lower cost OrangePi 5 board (different CPU, less RAM) which
 ran about 10% slower.
 
