@@ -17,17 +17,14 @@ No user login nor registration is needed for the following steps.
 
 I tested several single board computers rather like Raspberry Pi.
 
-[OrangePi 5 Plus](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5-plus.html)
-* ~150USD retail
-* RK3588 SOC (ARM)
-* 16GB RAM
-* 1TB SSD
+Hardware
+  
+| Board           | Retail  | CPU     | RAM  | Disk  | Website |
+| --------------- | ------- | ------- | ---: | ----- | ------- |
+| OrangePi 5 Plus | ~150USD | RK3588  | 16GB | 1TB   | [link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5-plus.html) |
+| OrangePi 5      | ~100USD | RK3588S |  8GB | 250GB | [link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5.html) |
 
-[OrangePi 5](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5.html)
-* ~100USD retail
-* RK3588S SOC (ARM)
-* 8GB RAM
-* 250GB SSD
+Retail estimates do not include cost of SSD disk, sales tax and shipping.
 
 Software
 * Ubuntu 22.04.5 LTS
@@ -300,7 +297,7 @@ results are shown in the
 * [x] Check if all CPU cores are being used.
 * [x] Quantify tokens per second.
 * [x] Try OrangePi 5 single board computer with lower cost RK3588S chip and less memory (~100USD retail with 8GB RAM).
-* [ ] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM)
+* [ ] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
 * [x] Try more reasoning examples.
 * [ ] Try larger size DeepSeek R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 
