@@ -291,7 +291,9 @@ results are shown in the
 
 # References
 
-* Training the R1 1.5B model: [DeepSeek R1 Coldstart](https://youtu.be/Pabqg33sUrg?si=EYr9Nqs1zdFuEpul)
+* Ollama: [website](http://www.ollama.com).  A platform and framework for running and managing LLMs.  Useful for running models without internet connectivity.
+* Training the R1 1.5B model: [DeepSeek R1 Coldstart](https://youtu.be/Pabqg33sUrg?si=EYr9Nqs1zdFuEpul).  Running a DeepSeek R1 distilled model on Ollama is demonstrated in this video.
+* Ubuntu OS for RockChip single board computers: [Joshua Riek's repository](https://github.com/Joshua-Riek/ubuntu-rockchip/releases).  I use Ubuntu Desktop OS from this repo.
 
 # Next steps
 
