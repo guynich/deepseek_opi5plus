@@ -174,7 +174,3 @@ Okay, so I need to describe a brief historical event from Paris. Let's break thi
 
 (venv_ollama) orangepi@orangepi5-plus:~/deepseek_opi5plus/chat$
 ```
-
-# Next steps
-
-* [ ] Print chat in realtime, see https://github.com/ollama/ollama-python/blob/main/examples/generate-stream.py.

@@ -1,4 +1,4 @@
-Running [DeepSeek](https://github.com/deepseek-ai) R1 reasoning model using [ollama](https://ollama.com) on an Ubuntu single board computer.
+Running [DeepSeek-R1](https://github.com/deepseek-ai) reasoning model using [ollama](https://ollama.com) on an Ubuntu single board computer.
 
 No user login nor registration is needed for the following steps.
 
@@ -7,9 +7,10 @@ No user login nor registration is needed for the following steps.
 - [Run the model.](#run-the-model)
   - [A simple problem](#a-simple-problem)
 - [Examples](#examples)
-  - [Installation](#installation)
   - [Benchmarking](#benchmarking)
-  - [Chat](#chat)
+  - [Chat script](#chat-script)
+    - [Installation](#installation)
+    - [Run](#run)
 - [References](#references)
 - [Next steps](#next-steps)
 
@@ -217,11 +218,38 @@ retained after quitting.
 
 # Examples
 
-This section describes DeepSeek R1 model examples using Ollama's Python API.
+## Benchmarking
 
-## Installation
+The speed of this model version on a computer can be quantified with counting 
+the number of tokens generated per second.  The `ollama` application provides 
+flag `--verbose` to return timing values.
+```bash
+ollama run deepseek-r1:1.5b --verbose
+```
+The returned `eval rate` value is the metric for quantifying the model
+speed in tokens per second.
 
-In this section python requirements are installed for running the examples.
+I used an earlier deprecated script in this repo to generate the following table 
+data.  The "1.5B" model running on OrangePi 5 Plus generates 7.8 tokens per 
+second.   I also ran the same test on lower cost OrangePi 5 board (different 
+CPU, less RAM) which ran about 10% slower.
+
+| Board           | CPU     | Tokens per second | Other    |
+| --------------- | ------- | ----------------- | -------- |
+| OrangePi 5 Plus | RK3588  | 7.8               | 16GB RAM |
+| OrangePi 5      | RK3588S | 7.0               | 8GB RAM  |
+
+These rates are equivalent to approximately 4-6 words per second. 
+
+## Chat script
+
+This section describes a chat example with several stored prompts using Ollama's 
+Python API.  It is more convenient for testing than using the `ollama run` 
+command.
+
+### Installation
+
+In this section python requirements are installed for running the example.
 
 First check ollama is installed as described above.
 ```bash
@@ -253,43 +281,23 @@ source ./venv_ollama/bin/activate
 python3 -m pip install -r deepseek_opi5plus/requirements.txt
 ```
 
-## Benchmarking
+### Run
 
-The speed of this model version on a computer can be quantified with counting 
-[the number of tokens generated per second](/benchmark/README.md).
-```bash
-cd
-cd deepseek_opi5plus/benchmark
-python3 main.py
-```
-The complete script results are shown in the 
-[benchmark folder README](/benchmark/README.md).
-
-The "1.5B" model running on OrangePi 5 Plus generates 7.8 tokens per second.  I also
-ran the same test on lower cost OrangePi 5 board (different CPU, less RAM) which
-ran about 10% slower.
-
-| Board           | CPU     | Tokens per second | Other    |
-| --------------- | ------- | ----------------- | -------- |
-| OrangePi 5 Plus | RK3588  | 7.8               | 16GB RAM |
-| OrangePi 5      | RK3588S | 7.0               | 8GB RAM  |
-
-## Chat
-
-In this example several stored prompts with context are passed to the model.
+In this example a sequence of stored prompts are passed to the model.  This 
+method creates context history for the later answers.
 ```bash
 cd
 cd deepseek_opi5plus/chat
 python3 main.py
 ```
-The model generates reasoning and answers with context. The complete script 
-results are shown in the
-[chat folder README](/chat/README.md#result).
+The model generates reasoning and answers with context.  The rate of the model
+is printed in tokens per second including the session average rate.  See 
+[chat folder README](/chat/README.md#result) for more information.
 
 # References
 
 * Ollama: [website](http://www.ollama.com).  A platform and framework for running and managing LLMs.  Useful for running models without internet connectivity.
-* Training the R1 1.5B model: [DeepSeek R1 Coldstart](https://youtu.be/Pabqg33sUrg?si=EYr9Nqs1zdFuEpul).  Running a DeepSeek R1 distilled model on Ollama is demonstrated in this video.
+* Training the R1 1.5B model: [DeepSeek-R1 Coldstart](https://youtu.be/Pabqg33sUrg?si=EYr9Nqs1zdFuEpul).  Running a DeepSeek-R1 distilled model on Ollama is demonstrated in this video.
 * Ubuntu OS for RockChip single board computers: [Joshua Riek's repository](https://github.com/Joshua-Riek/ubuntu-rockchip/releases).  I use Ubuntu Desktop OS from this repo.
 
 # Next steps
@@ -299,5 +307,6 @@ results are shown in the
 * [x] Try OrangePi 5 single board computer with lower cost RK3588S chip and less memory (~100USD retail with 8GB RAM).
 * [ ] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
 * [x] Try more reasoning examples.
-* [ ] Try larger size DeepSeek R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
-
+* [ ] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
+* [ ] Add full console example to the chat script README with rate metrics in tokens per second including average.
+* [ ] Print chat script session in realtime, see https://github.com/ollama/ollama-python/blob/main/examples/generate-stream.py.
