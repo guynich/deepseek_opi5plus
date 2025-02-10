@@ -308,5 +308,5 @@ is printed in tokens per second including the session average rate.  See
 * [ ] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
 * [x] Try more reasoning examples.
 * [ ] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
-* [ ] Add full console example to the chat script README with rate metrics in tokens per second including average.
+* [x] Add full console example to the chat script README with rate metrics in tokens per second including average.
 * [ ] Print chat script session in realtime, see https://github.com/ollama/ollama-python/blob/main/examples/generate-stream.py.

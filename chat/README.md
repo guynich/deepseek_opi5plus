@@ -1,4 +1,4 @@
-Chat example using Ollama's Python API.
+Chat session example using Ollama's Python API and DeepSeek-R1 1.5B model.
 
 # Installation
 
@@ -21,156 +21,139 @@ The example prompts.
 PROMPTS = [
     "What is the sum of 3 + 2?",
     "What is the result if +1 is added to both numbers before summing them?",
-    "What is the capital of France?",
+    "What is the capital city of France?",
     "Describe briefly a historical event from that city.",
 ]
 ```
 
 # Result.
+
+This example was run on an OrangePi 5 single board computer with 8GB RAM.  The
+model rate dropped from ~7 to above 4 tokens per second as the session 
+progressed. Suspected root cause for this slowdown is SoC CPU clock throttling 
+under sustained load: more thermal cooling may mitigate.
 ```console
-(venv_ollama) orangepi@orangepi5-plus:~/deepseek_opi5plus/chat$ python3 main.py
+(venv_ollama) orangepi@orangepi5-desktop:~/deepseek_opi5plus/chat$ python3 main.py
+
 User:  What is the sum of 3 + 2?
+generating ...
 Assistant:
 <think>
-First, I need to identify the two numbers in the addition problem: 3 and 2.
+First, I need to add the numbers 3 and 2 together.
 
-Next, I will add these two numbers together by combining their values.
+Next, I will perform the addition step by step. Starting with 3 and adding 2 makes it 5 in total.
 
-Finally, I can express the result as a number.
+Finally, the sum of 3 and 2 is 5.
 </think>
 
-To find the sum of \(3 + 2\), follow these simple steps:
+To find the sum of **3 + 2**, follow these simple steps:
 
-1. **Identify the Numbers:**
-   \[
-   3 \quad \text{and} \quad 2
-   \]
+1. **Start with the first number:**  
+   You begin with **3**.
 
-2. **Add the Numbers Together:**
+2. **Add the second number:**  
+   Next, add **2** to **3**:  
    \[
    3 + 2 = 5
    \]
 
-Therefore, the sum of \(3 + 2\) is:
+3. **Final Answer:**  
+   The sum of 3 and 2 is **5**.
 
 \[
 \boxed{5}
 \]
+Rate:          7.3 tokens per second
+Average rate:  7.3 tokens per second
+
 
 User:  What is the result if +1 is added to both numbers before summing them?
+generating ...
 Assistant:
 <think>
-Okay, so I have this math problem: What is the result if +1 is added to both numbers before summing them?
+Okay, let's try to figure this out step by step. 
 
-Alright, let me try to make sense of it. The original question was about adding 3 and 2. But now, we're modifying those numbers by adding 1 to each one first. So instead of doing \(3 + 2\), I need to do \((3 + 1) + (2 + 1)\).
+First, we're adding two numbers together, which are 3 and 2. That part is straightforward:
 
-Let me write that down:
+\[ 3 + 2 = 5 \]
 
-\[
-(3 + 1) + (2 + 1)
-\]
+Now, the question asks us to add **+1** before summing them. Hmm, does that mean we should first add 1 to each number before adding them together? 
 
-Now, let's compute what's inside the parentheses first.
+Wait a second—if I add 1 to both numbers first, it would look like this:
 
-Starting with the first part:
-\[
-3 + 1 = 4
-\]
+\[ (3 + 1) + (2 + 1) \]
 
-Then, for the second part:
-\[
-2 + 1 = 3
-\]
+Calculating inside the parentheses first:
 
-So now I have:
-\[
-4 + 3
-\]
+\[ 4 + 3 = 7 \]
 
-Finally, adding those together:
-\[
-4 + 3 = 7
-\]
+So, if we add 1 before summing, the result is **7**. 
 
-Wait a minute. That seems straightforward. But let me double-check to make sure I didn't make any mistakes.
+Alternatively, does "adding +1 to both numbers" mean adding it to just one of them? That would change things entirely. If I only added 1 to 3:
 
-Original numbers: \(3\) and \(2\).
+\[ 3 + 1 = 4 \]
 
-Adding \(1\) to each:
-\[
-3 + 1 = 4 \quad \text{and} \quad 2 + 1 = 3
-\]
+Then add 2:
 
-Summing those results:
-\[
-4 + 3 = 7
-\]
+\[ 4 + 2 = 6 \]
 
-Yes, that looks correct. So the final answer is:
+In this case, the result is **6**.
 
+I think the correct interpretation depends on how "adding +1 before summing them" is meant. It could either mean adding 1 to each number first or just one of them. To ensure clarity, it's important to specify whether we're modifying both numbers equally or only one.
+
+If we consider that we need to add **+1** to both numbers equally, the total would be:
+
+\[ (3 + 1) + (2 + 1) = 4 + 3 = 7 \]
+
+Therefore, the result of adding +1 before summing is **7**. 
+
+To summarize:
+
+- If you adjust each number by adding 1 first:
+  
 \[
 \boxed{7}
 \]
+
+- If you add 1 to just one number and then sum them:
+  
+\[
+\boxed{6}
+\]
+
+Depending on the intended interpretation, either **7** or **6** would be the correct answer.
+Rate:          6.1 tokens per second
+Average rate:  6.4 tokens per second
+
+
+User:  What is the capital city of France?
+generating ...
+Assistant:
+<think>
+
 </think>
 
-To solve the problem of adding \(+1\) to both numbers before summing them, follow these steps:
+The capital city of France is **Paris**.
+Rate:          4.2 tokens per second
+Average rate:  6.3 tokens per second
 
-1. **Original Numbers:** \(3\) and \(2\)
 
-2. **Add \(+1\) to Each Number:**
-   \[
-   3 + 1 = 4 \quad \text{and} \quad 2 + 1 = 3
-   \]
-
-3. **Sum the Adjusted Numbers:**
-   \[
-   4 + 3 = 7
-   \]
-
-**Final Answer:** \(\boxed{7}\)
-
-User:  What is the capital of France?
+User:  Describe an historical event from the 18th century in that city.
+generating ...
 Assistant:
 <think>
 
-Alright, so I need to figure out which city is the capital of France. Let me think about this step by step.
+To describe a historical event from the 18th century in Paris, I can focus on its importance during that era:
 
-1. **Understanding Capital Cities:** A capital city is typically the largest and most populous city in a country. It's where the capital is officially designated based on its population size.
+**The Formation and Growth of the French Republic:**
 
-2. **Thinking About France:** France is one of the seven countries in Europe, known for being a beautiful and diverse nation with a rich history.
+In the early 1700s, Paris was the capital of France, and the country began to transition from a centrally planned economy to a more democratic system. The establishment of the **Empire State** (1694–1732) in the 17th century laid the foundation for this new government.
 
-3. **Quick Recall:** I believe Paris is the capital of France. I've heard it referred to as the "capital of the world," which makes sense because of its location and growth over time.
+A significant event during this period was Paris's involvement in the **Treaty between France and Russia (1680-1691)**, which marked a pivotal moment in France's independence. This treaty helped formalize Paris' role as an independent political and economic center.
 
-4. **Double-Checking the Name:** To make sure, I'll think about any other cities associated with France. Lyon comes to mind, but that's a major city in southern France. Paris is definitely more commonly recognized as the capital.
+Beyond its political status, Paris became a hub for various social movements, including the French Revolution of 1789, which reshaped modern European history with its violent overthrow of the monarchy and its emphasis on individual rights and freedoms.
+Rate:          4.7 tokens per second
+Average rate:  5.8 tokens per second
 
-5. **Quick Fact Check:** Yes, Paris is indeed the country's capital. It's home to the Eiffel Tower and has been a bustling city in recent years due to its economic success.
-
-6. **Final Answer:** The capital of France is **Paris**.
-
-\[
-\boxed{\text{Paris}}
-\]
-
-User:  Describe briefly a historical event from that city.
-Assistant:
-<think>
-
-Okay, so I need to describe a brief historical event from Paris. Let's break this down step by step:
-
-1. **Understanding Historical Events in Paris:** Paris has a rich history with significant historical events throughout its history.
-
-2. **Identifying a Relevant Event:** The Great Truce was an important event where two neighboring countries, France and Russia, came together to end the War of the Spanish Succession in 1638. This marked a turning point in the fight for Paris from the Spanish domination.
-
-3. **Breaking Down the Great Truce:** The agreement led to political changes that kept Paris neutral until the French Revolution of 1789. It was a significant step in the development of modern France and highlighted the power of the Parisians under Napoleon Bonaparte.
-
-4. **Contextualizing the Event:** This event happened before the French Revolution, showing how Paris had grown from a vulnerable city into an important political center after the Treaty of Le May 1868.
-
-5. **Brief Summary of the Event:** The Great Truce between France and Russia in 1638 marked the end of the Spanish dominance, established Paris as an independent and powerful capital, and laid the groundwork for future political and economic changes in France.
-
-**Final Answer:** In 1638, the French and Spanish Wars led to the signing of the Great Truce between France and Castile. This event ended the prolonged conflict and established Paris as a significant neutral city during the transition to neutral before the French Revolution.
-\[
-\boxed{\text{The signing of the Great Truce in 1638 marked the end of the Spanish Wars, establishing Paris as a neutral city.}}
-\]
-
-(venv_ollama) orangepi@orangepi5-plus:~/deepseek_opi5plus/chat$
+(venv_ollama) orangepi@orangepi5-desktop:~/deepseek_opi5plus/chat$ 
 ```
