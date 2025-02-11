@@ -297,6 +297,7 @@ is printed in tokens per second including the session average rate.  See
 # References
 
 * Ollama: [website](http://www.ollama.com).  A platform and framework for running and managing LLMs.  Useful for running models without internet connectivity.
+* Ollama's Python API:  [ollama-python](https://github.com/ollama/ollama-python).  I found example scripts `chat-with-history.py` and `chat-steam.py` helpful.
 * Training the R1 1.5B model: [DeepSeek-R1 Coldstart](https://youtu.be/Pabqg33sUrg?si=EYr9Nqs1zdFuEpul).  Running a DeepSeek-R1 distilled model on Ollama is demonstrated in this video.
 * Ubuntu OS for RockChip single board computers: [Joshua Riek's repository](https://github.com/Joshua-Riek/ubuntu-rockchip/releases).  I use Ubuntu Desktop OS from this repo.
 
@@ -308,5 +309,4 @@ is printed in tokens per second including the session average rate.  See
 * [ ] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
 * [x] Try more reasoning examples.
 * [ ] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
-* [x] Add full console example to the chat script README with rate metrics in tokens per second including average.
-* [ ] Print chat script session in realtime, see https://github.com/ollama/ollama-python/blob/main/examples/generate-stream.py.
+* [x] Print chat script session in a stream
