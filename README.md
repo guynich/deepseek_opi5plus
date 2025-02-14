@@ -1,9 +1,15 @@
-Running [DeepSeek-R1](https://github.com/deepseek-ai) reasoning model using [ollama](https://ollama.com) on an Ubuntu single board computer.
+Running [DeepSeek-R1](https://github.com/deepseek-ai) reasoning model using 
+[Ollama](https://ollama.com) on an Ubuntu single board computer.
 
-No user login nor registration is needed for the following steps.  The distilled DeepSeek-R1 model runs locally without internet connection after installation.
+> [!TIP]
+> Note: Mac users can install the Ollama download [described here](/README_MAC.md).
+
+No user login nor registration is needed for the following steps.  The distilled 
+DeepSeek-R1 model runs locally on Ubuntu OS without internet connection after 
+installation.
 
 - [SBC hardware and setup](#sbc-hardware-and-setup)
-- [Install ollama](#install-ollama)
+- [Install Ollama](#install-ollama)
 - [Run the model.](#run-the-model)
   - [A simple problem](#a-simple-problem)
 - [Examples](#examples)
@@ -33,10 +39,10 @@ Software
 * Ubuntu 22.04.5 LTS [download](https://joshua-riek.github.io/ubuntu-rockchip-download/boards/orangepi-5-plus.html)
 * Python 3.10.12
 
-# Install ollama
+# Install Ollama
 
-This step installs `ollama` using a script command from
-[link](https://ollama.com/download/linux).  This was my first time using ollama
+This step installs `Ollama` using a script command from
+[link](https://ollama.com/download/linux).  This was my first time using Ollama
 to run an ML model.  Open Ubuntu Terminal and run this command.
 ```bash
 cd
@@ -289,7 +295,7 @@ command.
 
 In this section python requirements are installed for running the example.
 
-First check ollama is installed as described above.
+First check Ollama is installed as described above.
 ```bash
 cd
 curl -fsSL https://ollama.com/install.sh | sh
