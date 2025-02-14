@@ -1,7 +1,6 @@
 Chat session example using Ollama's Python API and DeepSeek-R1 1.5B model.
 
-Reasoning prompts with context are stored in a 
-[list in the main script](https://github.com/guynich/deepseek_opi5plus/blob/9020e777f48f07e41f57c5554647cc25b7ecc9ca/chat/main.py#L6).  
+Reasoning prompts with context are stored in `PROMPTS` list in the `main.py` script.  
 These were selected from some recommendations by OpenAI's ChatGPT.
 
 - [Installation](#installation)
