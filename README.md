@@ -233,6 +233,13 @@ quitting. On the next run of the command, e.g.:
 `ollama run deepseek-r1:1.5b`, I saw the model has no context from the past 
 runs.
 
+Ollama stores prompt history in the folder `.ollama`.  Should you wish to 
+delete the history.
+```console
+cd
+rm -rf .ollama/history
+```
+
 # Examples
 
 ## Benchmarking
