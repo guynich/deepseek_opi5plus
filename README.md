@@ -12,6 +12,7 @@ installation.
 - [Install Ollama](#install-ollama)
 - [Run the model.](#run-the-model)
   - [A simple problem](#a-simple-problem)
+  - [Prompt history](#prompt-history)
 - [Examples](#examples)
   - [Benchmarking](#benchmarking)
     - [1.5B model](#15b-model)
@@ -228,16 +229,18 @@ reasoning before providing the correct answer `7`.
 
 Type `ctrl + d` to quit.  
 
-In my testing the history of previous prompt questions is not retained after 
-quitting. On the next run of the command, e.g.:
-`ollama run deepseek-r1:1.5b`, I saw the model has no context from the past 
-runs.
+## Prompt history
+Ollama stores a text file containing prompt history in the folder `.ollama`.  
+This prompt history is available using the cursor keys to scroll back through your 
+earlier prompts when running a model.
 
-Ollama stores prompt history in the folder `.ollama`.  Should you wish to 
-delete the history.
+On a new run of the command `ollama run deepseek-r1:1.5b` I did not observe the model 
+has any context from any earlier runs.
+
+Should you wish to delete this history then delete the file.
 ```console
 cd
-rm -rf .ollama/history
+rm -f .ollama/history
 ```
 
 # Examples
