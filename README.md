@@ -33,11 +33,12 @@ Hardware
 | --------------- | ------- | ------- | ---: | ----- | ------- |
 | OrangePi 5 Plus | ~150USD | RK3588  | 16GB | 1TB   | [link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5-plus.html) |
 | OrangePi 5      | ~100USD | RK3588S |  8GB | 250GB | [link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5.html) |
+| OrangePi 3B     | ~50USD  | RK3566  |  4GB | microSD | [link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) |
 
-Retail estimates do not include cost of SSD disk, sales tax and shipping.
+Retail estimates do not include cost of disk or microSD, sales tax and shipping.
 
 Software
-* Ubuntu 22.04.5 LTS [download](https://joshua-riek.github.io/ubuntu-rockchip-download/boards/orangepi-5-plus.html)
+* Ubuntu 22.04.5 LTS [download](https://joshua-riek.github.io/ubuntu-rockchip-download)
 * Python 3.10.12
 
 # Install Ollama
@@ -273,16 +274,20 @@ runs I saw variation in range [7.77, 8.03] tokens per second and the number of
 `eval count` tokens varied in range [131, 193].
 
 I used an earlier deprecated script in this repo to generate the following table 
-data.  The DeepSeek-R1 1.5B distilled model running on OrangePi 5 Plus generated 
-7.8 tokens per  second.   I also ran the same test on lower cost OrangePi 5 
-board (different CPU, less RAM) which ran about 10% slower.
+data for a single prompt.  The DeepSeek-R1 1.5B distilled model running on 
+OrangePi 5 Plus generated 7.8 tokens per second.   I also ran the same test on 
+lower cost OrangePi 5 board (different CPU, less RAM) which ran about 10% 
+slower.  
 
 | Model | Board           | CPU     | Tokens per second | Other    |
 | ----- | --------------- | ------- | ----------------- | -------- |
 | 1.5B  | OrangePi 5 Plus | RK3588  | 7.8               | 16GB RAM |
 | 1.5B  | OrangePi 5      | RK3588S | 7.0               | 8GB RAM  |
+| 1.5B  | OrangePi 3B     | RK3566  | 2.4               | 4GB RAM  |
 
-These rates are equivalent to approximately 4-6 words per second.
+The rates for the first two rows are equivalent to approximately 4-6 words per 
+second which is faster than human speech (~2-3 words per second).  The lowest 
+cost board (OrangePi 3B) rate is slower than human speech.
 
 ### 7B model
 
@@ -367,4 +372,4 @@ is printed in tokens per second including the session average rate.  See
 * [x] Try more reasoning examples.
 * [x] Print chat script session in a stream
 * [x] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
-* [ ] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
+* [x] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
