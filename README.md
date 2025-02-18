@@ -286,8 +286,8 @@ slower.
 | 1.5B  | OrangePi 3B     | RK3566  | 2.4               | 4GB RAM  |
 
 The rates for the first two rows are equivalent to approximately 4-6 words per 
-second which is faster than human speech (~2-3 words per second).  The lowest 
-cost board (OrangePi 3B) rate is slower than human speech.
+second which is faster than human speech (roughly 2 words per second).  The 
+lowest cost board (OrangePi 3B) rate is slower than human speech.
 
 ### 7B model
 
