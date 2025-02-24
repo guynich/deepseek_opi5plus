@@ -1,0 +1,9 @@
+FROM deepseek-r1:1.5b
+
+# set the temperature [higher is more creative, lower is more coherent]
+PARAMETER temperature 0.5
+
+# set the system message
+SYSTEM """
+Please reason step by step.  
+"""

@@ -14,6 +14,7 @@ installation.
   - [A simple problem](#a-simple-problem)
   - [Prompt history](#prompt-history)
 - [Examples](#examples)
+  - [Temperature (experimental)](#temperature-experimental)
   - [Benchmarking](#benchmarking)
     - [1.5B model](#15b-model)
     - [7B model](#7b-model)
@@ -246,6 +247,38 @@ rm -f .ollama/history
 
 # Examples
 
+## Temperature (experimental)
+
+DeepSeek documentation recommends changing 
+[parameter `temperature`](https://api-docs.deepseek.com/quick_start/parameter_settings) 
+based on the use case.  This documentation does not state if this guidance is
+specific to the V3 model or the R1 model.  
+
+DeepSeek R1 model documentation also mentions setting the `temperature` in these
+[usage recommendations](https://github.com/deepseek-ai/DeepSeek-R1#usage-recommendations).
+
+To experiment with this parameter Ollama offers customization of a model using 
+[Modelfile documentation](https://github.com/ollama/ollama/blob/main/docs/modelfile.md#ollama-model-file).  
+An example [Modelfile_r1_1.5b](/Modelfile_r1_1.5b) is provided in this repo
+with a temperature parameter.
+
+To run the customized model\ first create `r1`.  The DeepSeek R-1 1.5B model
+needs to be pulled first if not already done as before.
+```console
+ollama pull deepseek-r1:1.5b
+
+ollama create r1 -f ./Modelfile_r1_1.5b
+```
+
+Then run the customized model `r1`.
+```console
+ollama run r1
+```
+
+I'm not sure I see a difference in the answers compared with running the 
+model `ollama run deepseek-r1:1.5b`.  This Modelfile is provided for 
+experimentation and comments are welcome!
+
 ## Benchmarking
 
 The speed of this model version on a computer can be quantified with counting 
@@ -373,3 +406,4 @@ is printed in tokens per second including the session average rate.  See
 * [x] Print chat script session in a stream
 * [x] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 * [x] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
+* [x] Add Ollama Modefile with temperature.
