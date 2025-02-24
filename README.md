@@ -262,7 +262,7 @@ To experiment with this parameter Ollama offers customization of a model using
 An example [Modelfile_r1_1.5b](/Modelfile_r1_1.5b) is provided in this repo
 with a temperature parameter.
 
-To run the customized model\ first create `r1`.  The DeepSeek R-1 1.5B model
+To run the customized model first create `r1`.  The DeepSeek R-1 1.5B model
 needs to be pulled first if not already done as before.
 ```console
 ollama pull deepseek-r1:1.5b
@@ -406,4 +406,4 @@ is printed in tokens per second including the session average rate.  See
 * [x] Print chat script session in a stream
 * [x] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 * [x] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
-* [x] Add Ollama Modefile with temperature.
+* [x] Add Ollama Modelfile with temperature.
