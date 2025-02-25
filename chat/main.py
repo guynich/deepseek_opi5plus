@@ -69,7 +69,15 @@ class OllamaChat:
         self.messages.append({"role": "user", "content": prompt})
 
         content = ""
-        for part in ollama_chat(model=self.model, messages=self.messages, stream=True):
+        for part in ollama_chat(
+            model=self.model,
+            messages=self.messages,
+            options={
+                "seed": 42,
+                "temperature": 0.6,
+            },
+            stream=True,
+        ):
             chunk = part["message"]["content"]
             print(chunk, end="", flush=True)
             content += chunk

@@ -41,6 +41,8 @@ Chat session details.
 * Used hardware thermal cooling (SoC heatsink and small fan) to mitigate model slowing down due to clock throttling under CPU load.
 * Some issues with model responses were seen and discussed in a [later section](#observations) in this README.
 
+TODO: update these sections.
+
 ## Simple mathematics
 ```console
 (venv_ollama) orangepi@orangepi5-desktop:~/deepseek_opi5plus/chat$ python3 main.py
@@ -738,11 +740,10 @@ tasks.  These are suitable tasks for reasoning models.  My judgement is the
 answers are correct.
 
 Notes.
-* The model sometimes response without any reasoning inside the `<think>` `</think>` tags.  The subsequent answer is usually correct.
-* The model sometimes returns response without closing the `</think>` tag.  The reasoning is correct and provides a usable answer in the above examples.
+* The model sometimes responds without any reasoning inside the `<think>` `</think>` tags.  The subsequent answer is usually correct.
+* The model sometimes responds without closing the `</think>` tag.  The reasoning is correct and provides a usable answer in the above examples.
 * The model rate varied from ~7 to ~3.5 tokens per second as the session progressed with an average rate of 4.4 for the entire session.
   * OrangePi 5 (RK3588S CPU) single board computer clock was stable in range [2.0, 2.2]MHz which implies the rate reduction was not due to clock throttling.
   * Suspect the increasing context history may slow the model?
 * During the session around ~11 W of electrical power was drawn at the mains supply.
-* I tried an option `"temperature"` with values of 0.3 and 0.5 to try make the model responses more deterministic but couldn't detect an improvement.  The test was run without specifying this option.
 * For non-reasoning tasks such as general knowledge questions the model can hallucinate.  There are no examples in this session.

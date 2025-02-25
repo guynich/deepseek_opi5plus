@@ -407,3 +407,4 @@ is printed in tokens per second including the session average rate.  See
 * [x] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 * [x] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
 * [x] Add Ollama Modefile with temperature.
+* [ ] Update chat/README for OrangePi 5 run with `"seed": 42` in chat script.
