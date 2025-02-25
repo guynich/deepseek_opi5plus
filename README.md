@@ -262,7 +262,7 @@ To experiment with this parameter Ollama offers customization of a model using
 An example [Modelfile_r1_1.5b](/Modelfile_r1_1.5b) is provided in this repo
 with a temperature parameter.
 
-To run the customized model\ first create `r1`.  The DeepSeek R-1 1.5B model
+To run the customized model first create `r1`.  The DeepSeek R-1 1.5B model
 needs to be pulled first if not already done as before.
 ```console
 ollama pull deepseek-r1:1.5b
