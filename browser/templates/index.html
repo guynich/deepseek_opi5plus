@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local chat using DeepSeek-R1 and Ollama</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0;}
+        .container { width: 50%; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; }
+        .chat-box { margin-top: 0; border-top: 2px solid #ddd; padding-top: 20px;}
+        .chat-box .user-message, .chat-box .bot-message { padding: 10px; margin: 10px 0; border-radius: 5px;}
+        .user-message { background-color: #e1f5fe; text-align: right;}
+        .bot-message { background-color: #f1f1f1; white-space: pre-wrap; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .bot-message think { 
+            color: #666;
+            font-style: italic;
+            border-left: 3px solid #57b368;
+            padding-left: 10px;
+            margin: 5px 0;
+            display: block;
+            background-color: #f8f9fa;  /* Lighter background to distinguish thinking steps */
+            white-space: pre-wrap;       /* Preserve line breaks */
+            word-wrap: break-word;       /* Break long words if needed */
+            overflow-wrap: break-word;   /* Modern browsers */
+        }
+        .bot-message pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .bot-message code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .bot-message p {
+            margin: 0 0 1em 0;
+        }
+        .bot-message ul, .bot-message ol {
+            margin-left: 20px;
+        }
+        form { margin-top: 20px; margin-bottom: 20px; }
+        input[type="text"] { width: 80%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;}
+        button { padding: 10px 20px; border: none; background-color: #007BFF; color: white; border-radius: 5px; cursor: pointer;}
+        #thinking {
+            display: none;
+            color: #666;
+            font-style: italic;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+            border-left: 3px solid #57b368;
+        }
+        .dot-flashing {
+            display: inline-block;
+            position: relative;
+            width: 4px;
+            height: 4px;
+            background-color: #666;
+            border-radius: 50%;
+            animation: dot-flashing 1s infinite linear alternate;
+            margin-left: 8px;
+        }
+        @keyframes dot-flashing {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reasoning with DeepSeek-R1</h1>
+        <form id="chat-form" method="POST">
+            <input type="text" 
+                   name="user_input" 
+                   placeholder="Ask me something that needs reasoning..." 
+                   value="" 
+                   required>
+            <button type="submit">Send</button>
+        </form>
+        <div id="thinking">
+            Thinking<span class="dot-flashing"></span>
+        </div>
+        <div class="chat-box">
+            {% if last_question %}
+                <div class="user-message">{{ last_question }}</div>
+                <div class="bot-message">{{ bot_response|safe }}</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const input = form.querySelector('input');
+            const thinking = document.getElementById('thinking');
+            const chatBox = document.querySelector('.chat-box');
+
+            // Show thinking indicator
+            thinking.style.display = 'block';
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                // Add new messages to chat box
+                chatBox.innerHTML = `
+                    <div class="user-message">${data.last_question}</div>
+                    <div class="bot-message">${data.response}</div>
+                    ${chatBox.innerHTML}
+                `;
+                
+                // Clear input
+                input.value = '';
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                // Hide thinking indicator
+                thinking.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

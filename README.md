@@ -21,6 +21,7 @@ installation.
   - [Chat script](#chat-script)
     - [Installation](#installation)
     - [Run](#run)
+  - [Web server](#web-server)
 - [References](#references)
 - [Next steps](#next-steps)
 
@@ -247,6 +248,9 @@ rm -f .ollama/history
 
 # Examples
 
+This section contains several different examples showing the usage of a local
+version of DeepSeek-R1 model.
+
 ## Temperature (experimental)
 
 DeepSeek documentation recommends changing 
@@ -337,7 +341,7 @@ trade-off for this CPU.
 
 This section describes a chat example with several stored prompts using Ollama's 
 Python API.  It is more convenient for testing than using the `ollama run` 
-command.
+command.  Runs on Terminal command line.  
 
 ### Installation
 
@@ -386,6 +390,28 @@ The model generates reasoning and answers with context.  The rate of the model
 is printed in tokens per second including the session average rate.  See 
 [chat folder README](/chat/README.md#result) for more information.
 
+## Web server
+
+This example provides a local HTML page for user input with the DeepSeek-R1 1.5B 
+model.
+
+Run the web server.
+```console
+cd
+source ./venv_ollama/bin/activate
+
+python3 deepseek_opi5plus/browser/server.py
+```
+
+Navigate to `http://127.0.0.1:5000` in a browser for the chat session.  Tested
+with Chromium browser on Ubuntu 22.04 on OrangePi 5, and in Safari browser on 
+MacOS.
+
+<img src="/images/chat_browser.png" alt="Web browser interface"/>
+
+The browser web page is updated after the model has finished generating text.  
+Context history is preserved during the session.
+
 # References
 
 * Ollama.
@@ -407,4 +433,5 @@ is printed in tokens per second including the session average rate.  See
 * [x] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 * [x] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
 * [x] Add Ollama Modefile with temperature.
+* [x] Adds local web server using DeepSeek-R1 1.5B model for browser chat session.
 * [ ] Update chat/README for OrangePi 5 run with `"seed": 42` in chat script.

@@ -1,1 +1,3 @@
+Flask
+markdown
 ollama

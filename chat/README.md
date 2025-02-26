@@ -1,4 +1,4 @@
-Chat session example using Ollama's Python API and DeepSeek-R1 1.5B model.
+Chat session client using Ollama's Python API and DeepSeek-R1 1.5B model.
 
 Reasoning prompts with context are stored in `PROMPTS` list in the `main.py` script.  
 These were selected from some recommendations by OpenAI's ChatGPT.
