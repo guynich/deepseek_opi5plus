@@ -422,6 +422,8 @@ Context history is preserved during the session.
     * DeepSeek-R1 Coldstart [youtube.com](https://youtu.be/Pabqg33sUrg?si=EYr9Nqs1zdFuEpul).  Running a DeepSeek-R1 distilled model on Ollama is demonstrated in this video.
 * Ubuntu OS.
     * RockChip single board computers: [github.com/Joshua-Riek](https://github.com/Joshua-Riek/ubuntu-rockchip/releases).  I used Ubuntu Desktop OS 22.04 from this repo dated [2024-10-22](https://joshua-riek.github.io/ubuntu-rockchip-download/boards/orangepi-5-plus.html).
+* GitHub Copilot.
+  * I used Copilot as a pair programmer to develop the browser script and template.
 
 # Next steps
 
