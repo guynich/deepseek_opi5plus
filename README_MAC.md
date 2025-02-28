@@ -17,7 +17,7 @@ You can now enter the commands described in the README
 ollama run deepseek-r1:1.5b
 ```
 
-You can also run other LLM models supported by Ollama such as this smaller 
+You can also run other LLM models supported by Ollama such as this smaller
 version of Llama 3.2.
 ```bash
 ollama run llama3.2:1b

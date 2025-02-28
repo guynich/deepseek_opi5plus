@@ -1,6 +1,6 @@
 Chat session client using Ollama's Python API and DeepSeek-R1 1.5B model.
 
-Reasoning prompts with context are stored in `PROMPTS` list in the `main.py` script.  
+Reasoning prompts with context are stored in `PROMPTS` list in the `main.py` script.
 These were selected from some recommendations by OpenAI's ChatGPT.
 
 - [Installation](#installation)
@@ -37,7 +37,7 @@ python3 main.py
 # Result
 
 Chat session details.
-* OrangePi 5 single board computer with 8GB RAM.  
+* OrangePi 5 single board computer with 8GB RAM.
 * Used hardware thermal cooling (SoC heatsink and small fan) to mitigate model slowing down due to clock throttling under CPU load.
 * Some issues with model responses were seen and discussed in a [later section](#observations) in this README.
 
@@ -62,7 +62,7 @@ Finally, I'll determine that the result is 5.
 
 To find the sum of \(3 + 2\), follow these simple steps:
 
-1. **Addition Operation:**  
+1. **Addition Operation:**
    \[
    3 + 2 = 5
    \]
@@ -126,7 +126,7 @@ Session total:
   Average speed: 6.8 tokens/s
 ```
 
-> The model's answer was correct.  However the response failed to include 
+> The model's answer was correct.  However the response failed to include
 > reasoning on this particular run inside the `<think>` tags.
 
 ## Mathematical reasoning
@@ -204,7 +204,7 @@ Session total:
   Average speed: 6.7 tokens/s
 ```
 
-> The model's produced the expected result.  However the response failed to 
+> The model's produced the expected result.  However the response failed to
 > close the  `<\think>` tag on this particular run.
 
 ## Mathematical reasoning with history
@@ -298,10 +298,10 @@ Yes, that still holds up.
    - Second leg:
      - Distance = 90 miles
      - Time = 2 hours
-   
+
    - Total distance = 60 + 90 = 150 miles
    - Total time = 1 + 2 = 3 hours
-   
+
    - Average speed = Total distance / Total time = 150 miles / 3 hours = 50 mph
 
 2. **Modified Scenario:**
@@ -311,10 +311,10 @@ Yes, that still holds up.
    - Second leg:
      - Distance = 90 miles
      - Time = 2 hours
-   
+
    - Total distance = 30 + 90 = 120 miles
    - Total time = 1 + 2 = 3 hours
-   
+
    - Average speed = Total distance / Total time = 120 miles / 3 hours = 40 mph
 
 **Final Answer:**
@@ -352,10 +352,10 @@ Now, let's apply each clue one by one.
 
 1. **Alice's favorite color is not red.**
    - This means Alice likes either **Blue** or **Green**.
-   
+
 2. **Bob's favorite color is not blue.**
    - So Bob could like either **Red** or **Green**.
-   
+
 3. **Charlie's favorite color is not green.**
    - Therefore, Charlie must like either **Red** or **Blue**.
 
@@ -363,7 +363,7 @@ Okay, so let's start by considering Alice first since we know she doesn't like r
 
 - If Alice likes **Blue**, then Bob can only like **Green** because Blue is already taken.
   - Then Charlie would have to like the remaining color, which is **Red**.
-  
+
 Alternatively, if Alice likes **Green**, then:
 
 - Alice: Green
@@ -388,14 +388,14 @@ In **First Scenario:**
 - Alice likes blue (not red) ✔️
 - Bob likes green (not blue) ✔️
 - Charlie likes red (not green) ✔️
-  
+
 All clues are satisfied.
 
 In **Second Scenario:**
 - Alice likes green (not red) ✔️
 - Bob likes red (not blue) ✔️
 - Charlie likes blue (not green) ✔️
-  
+
 All clues are also satisfied.
 
 So, both scenarios seem to work. However, is there a way to determine the exact favorite color for each person? It seems like based on the given information alone, both possibilities are valid.
@@ -454,7 +454,7 @@ Hmm, let me think about what this function is trying to do. It says "return num 
 
 Wait a minute, I remember that in Python, the modulus operator `%` gives the remainder after division. So, for example, 6 % 2 is 0 because 6 divided by 2 leaves no remainder. But this function returns `True` only when the remainder is 1. That seems backwards.
 
-Let me test some examples to see what's happening. 
+Let me test some examples to see what's happening.
 
 If I plug in an even number like 4:
 - 4 % 2 = 0
@@ -494,7 +494,7 @@ The provided Python function `def is_even(num): return num % 2 == 1` **does not 
 **Explanation of the Bug:**
 
 - The expression `num % 2` returns the remainder when `num` is divided by 2.
-  
+
 - For an **even number**, such as 4, `4 % 2` equals 0, which is not equal to 1. Therefore, the function should return **False**.
 
 - However, for an **odd number**, such as 5, `5 % 2` equals 1, which matches the condition in the expression `== 1`. Thus, the function should return **True**.
@@ -513,7 +513,7 @@ With this corrected version, the function accurately identifies even numbers bec
 **Summary:**
 
 - **Incorrect Behavior:** The original function incorrectly identified odd numbers as even and vice versa.
-  
+
 - **Why It's Incorrect:** It used `== 1` instead of `== 0` to check for oddness. This was swapped, leading to the opposite behavior.
 
 - **Corrected Function:** Using `num % 2 == 0` ensures that the function accurately determines even numbers by returning `True` only when there's no remainder.
@@ -645,7 +645,7 @@ Session total:
 ```console
 Prompt:  What is the next number in the sequence? 2, 6, 12, 20, 30, ___ Explain your reasoning.
 <think>
-Alright, so I've got this sequence: 2, 6, 12, 20, 30, and I need to figure out what comes next. At first glance, the numbers seem to be increasing by larger intervals each time—4, then 6, followed by 8, and then 10. That pattern makes me think that maybe the differences between consecutive terms are themselves forming an arithmetic sequence. 
+Alright, so I've got this sequence: 2, 6, 12, 20, 30, and I need to figure out what comes next. At first glance, the numbers seem to be increasing by larger intervals each time—4, then 6, followed by 8, and then 10. That pattern makes me think that maybe the differences between consecutive terms are themselves forming an arithmetic sequence.
 
 But before jumping into conclusions, I should probably look for a more straightforward pattern or formula that could explain these numbers. Let's see:
 
@@ -658,16 +658,16 @@ First, let's list out the given numbers:
 
 Now, let's calculate the differences between each term to see if there's a consistent pattern:
 
-Term 2 - Term 1 = 6 - 2 = 4  
-Term 3 - Term 2 = 12 - 6 = 6  
-Term 4 - Term 3 = 20 - 12 = 8  
-Term 5 - Term 4 = 30 - 20 = 10  
+Term 2 - Term 1 = 6 - 2 = 4
+Term 3 - Term 2 = 12 - 6 = 6
+Term 4 - Term 3 = 20 - 12 = 8
+Term 5 - Term 4 = 30 - 20 = 10
 
 So, the differences are: 4, 6, 8, 10. That's an arithmetic progression with a common difference of 2. If this pattern continues, the next difference would be 12. Therefore, adding 12 to the last term (30) should give me the sixth term:
 
 Term 6 = Term 5 + Difference = 30 + 12 = 42.
 
-Wait a minute, but I'm not sure if that's the only possible pattern here. Maybe there's another way to approach this problem? Let me think... Perhaps there's a formula or function that can generate these numbers directly. 
+Wait a minute, but I'm not sure if that's the only possible pattern here. Maybe there's another way to approach this problem? Let me think... Perhaps there's a formula or function that can generate these numbers directly.
 
 Another thought: These numbers look familiar—like they could be triangular numbers, which are formed by the sum of consecutive integers. For example:
 
@@ -692,21 +692,21 @@ But in my earlier calculation using the difference method, Term 6 came out as 42
 
 Let me double-check the difference pattern:
 
-- Term differences: 4, 6, 8, 10  
+- Term differences: 4, 6, 8, 10
 So the next difference should indeed be 12, making Term 6 = 30 + 12 = 42.
 
 Alternatively, if each term is a triangular number with odd increments:
 
-Term 1: 1 (sum of 1)  
+Term 1: 1 (sum of 1)
 Term 2: 3 (1 + 2) → but the given sequence has 2. Hmm, that doesn't match.
 
 Wait, perhaps the starting point is different. Maybe Term 1 is 0 instead of 1? Let's try:
 
-- Term 1: 0  
-- Term 2: 2 (0 + 2)  
-- Term 3: 6 (2 + 4)  
-- Term 4: 12 (6 + 6)  
-- Term 5: 20 (12 + 8)  
+- Term 1: 0
+- Term 2: 2 (0 + 2)
+- Term 3: 6 (2 + 4)
+- Term 4: 12 (6 + 6)
+- Term 5: 20 (12 + 8)
 
 This seems to align with the differences of 4, 6, 8, etc. So maybe the first term is considered as 0 instead of 1? Or perhaps there's a different starting point for the odd numbers.
 
@@ -734,9 +734,9 @@ Session total:
 
 # Observations
 
-These responses demonstrate DeepSeek-R1 distilled 1.5B model performing 
-multi-step logical reasoning, mathematical problem-solving, and structured 
-tasks.  These are suitable tasks for reasoning models.  My judgement is the 
+These responses demonstrate DeepSeek-R1 distilled 1.5B model performing
+multi-step logical reasoning, mathematical problem-solving, and structured
+tasks.  These are suitable tasks for reasoning models.  My judgement is the
 answers are correct.
 
 Notes.

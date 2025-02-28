@@ -1,11 +1,11 @@
-Running [DeepSeek-R1](https://github.com/deepseek-ai) reasoning model using 
+Running [DeepSeek-R1](https://github.com/deepseek-ai) reasoning model using
 [Ollama](https://ollama.com) on an Ubuntu single board computer.
 
 > [!TIP]
 > Note: Mac users can install the Ollama download [described here](/README_MAC.md).
 
-No user login nor registration is needed for the following steps.  The distilled 
-DeepSeek-R1 model runs locally on Ubuntu OS without internet connection after 
+No user login nor registration is needed for the following steps.  The distilled
+DeepSeek-R1 model runs locally on Ubuntu OS without internet connection after
 installation.
 
 - [SBC hardware and setup](#sbc-hardware-and-setup)
@@ -31,7 +31,7 @@ installation.
 I tested several single board computers rather like Raspberry Pi.
 
 Hardware
-  
+
 | Board           | Retail  | CPU     | RAM  | Disk  | Website |
 | --------------- | ------- | ------- | ---: | ----- | ------- |
 | OrangePi 5 Plus | ~150USD | RK3588  | 16GB | 1TB   | [link](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-5-plus.html) |
@@ -100,7 +100,7 @@ success
 ```
 
 We can see model information and licence by typing `/show info` and
-`/show license`.  
+`/show license`.
 * It is shared using the permissive open-source software MIT license.
 * This distilled model is based on Alibaba Cloud's Qwen team's model architecture and trained weights.
 * It uses 4-bit quantization same as the LLM that we used on a project called [AI in Box](https://github.com/usefulsensors/ai_in_a_box#quick-start) at Useful Sensors.  At Google I worked on quantizing ML models with 4-bits of weight precision with great results.
@@ -203,16 +203,16 @@ The text between `<think>` and `</think>` shows the "chain-of-thought" or
 reasoning of the model as it examines the problem.  It is not deterministic and
 the reasoning text will vary from run to run with the same prompt.
 
-The final text after `</think>` is the model's answer to the prompt and 
-produces the expected numerical result `5`.  The text in the answer will 
+The final text after `</think>` is the model's answer to the prompt and
+produces the expected numerical result `5`.  The text in the answer will
 vary from run to run.  In my testing the numerical result of 5 is consistent.
 
-The model generated answer has several types of text formatting (Markdown, LaTeX) 
-which are not rendered in my block above.  The answer is duplicated here with an 
+The model generated answer has several types of text formatting (Markdown, LaTeX)
+which are not rendered in my block above.  The answer is duplicated here with an
 indent to demonstrate the Markdown formatting.
 
 > To solve the addition problem \(3 + 2\), follow these steps:
-> 
+>
 > 1. **Identify the numbers being added:**
 >   - The first number is **3**.
 >   - The second number is **2**.
@@ -221,24 +221,24 @@ indent to demonstrate the Markdown formatting.
 >    \[
 >    3 + 2 = 5
 >    \]
-> 
+>
 > 3. **Conclusion:**
 >    - The sum of \(3\) and \(2\) is **5**.
 
-The session retains information from earlier questions for context.  So if 
-you ask a follow-up question, such as 
+The session retains information from earlier questions for context.  So if
+you ask a follow-up question, such as
 `repeat the sum but first add +1 to both numbers`,
 the model will recall the original numbers from the previous question during
 reasoning before providing the correct answer `7`.
 
-Type `ctrl + d` to quit.  
+Type `ctrl + d` to quit.
 
 ## Prompt history
-Ollama stores a text file containing prompt history in the folder `.ollama`.  
-This prompt history is available using the cursor keys to scroll back through your 
+Ollama stores a text file containing prompt history in the folder `.ollama`.
+This prompt history is available using the cursor keys to scroll back through your
 earlier prompts when running a model.
 
-On a new run of the command `ollama run deepseek-r1:1.5b` I did not observe the model 
+On a new run of the command `ollama run deepseek-r1:1.5b` I did not observe the model
 has any context from any earlier runs.
 
 Should you wish to delete this history then delete the file.
@@ -258,16 +258,16 @@ version of DeepSeek-R1 model.
 
 ## Temperature (experimental)
 
-DeepSeek documentation recommends changing 
-[parameter `temperature`](https://api-docs.deepseek.com/quick_start/parameter_settings) 
+DeepSeek documentation recommends changing
+[parameter `temperature`](https://api-docs.deepseek.com/quick_start/parameter_settings)
 based on the use case.  This documentation does not state if this guidance is
-specific to the V3 model or the R1 model.  
+specific to the V3 model or the R1 model.
 
 DeepSeek R1 model documentation also mentions setting the `temperature` in these
 [usage recommendations](https://github.com/deepseek-ai/DeepSeek-R1#usage-recommendations).
 
-To experiment with this parameter Ollama offers customization of a model using 
-[Modelfile documentation](https://github.com/ollama/ollama/blob/main/docs/modelfile.md#ollama-model-file).  
+To experiment with this parameter Ollama offers customization of a model using
+[Modelfile documentation](https://github.com/ollama/ollama/blob/main/docs/modelfile.md#ollama-model-file).
 An example [Modelfile_r1_1.5b](/Modelfile_r1_1.5b) is provided in this repo
 with a temperature parameter.
 
@@ -284,14 +284,14 @@ Then run the customized model `r1`.
 ollama run r1
 ```
 
-I'm not sure I see a difference in the answers compared with running the 
-model `ollama run deepseek-r1:1.5b`.  This Modelfile is provided for 
+I'm not sure I see a difference in the answers compared with running the
+model `ollama run deepseek-r1:1.5b`.  This Modelfile is provided for
 experimentation and comments are welcome!
 
 ## Benchmarking
 
-The speed of this model version on a computer can be quantified with counting 
-the number of tokens generated per second.  The `ollama` application provides 
+The speed of this model version on a computer can be quantified with counting
+the number of tokens generated per second.  The `ollama` application provides
 flag `--verbose` to return timing values.
 
 ### 1.5B model
@@ -312,14 +312,14 @@ eval duration:        24.369s
 eval rate:            7.92 tokens/s
 ```
 The returned `eval rate` value for this run was 7.9 tokens per second.  For five
-runs I saw variation in range [7.77, 8.03] tokens per second and the number of 
+runs I saw variation in range [7.77, 8.03] tokens per second and the number of
 `eval count` tokens varied in range [131, 193].
 
-I used an earlier deprecated script in this repo to generate the following table 
-data for a single prompt.  The DeepSeek-R1 1.5B distilled model running on 
-OrangePi 5 Plus generated 7.8 tokens per second.   I also ran the same test on 
-lower cost OrangePi 5 board (different CPU, less RAM) which ran about 10% 
-slower.  
+I used an earlier deprecated script in this repo to generate the following table
+data for a single prompt.  The DeepSeek-R1 1.5B distilled model running on
+OrangePi 5 Plus generated 7.8 tokens per second.   I also ran the same test on
+lower cost OrangePi 5 board (different CPU, less RAM) which ran about 10%
+slower.
 
 | Model | Board           | CPU     | Tokens per second | Other    |
 | ----- | --------------- | ------- | ----------------- | -------- |
@@ -327,8 +327,8 @@ slower.
 | 1.5B  | OrangePi 5      | RK3588S | 7.0               | 8GB RAM  |
 | 1.5B  | OrangePi 3B     | RK3566  | 2.4               | 4GB RAM  |
 
-The rates for the first two rows are equivalent to approximately 4-6 words per 
-second which is faster than human speech (roughly 2 words per second).  The 
+The rates for the first two rows are equivalent to approximately 4-6 words per
+second which is faster than human speech (roughly 2 words per second).  The
 lowest cost board (OrangePi 3B) rate is slower than human speech.
 
 ### 7B model
@@ -338,15 +338,15 @@ Command.
 ollama run deepseek-r1:7b --verbose
 ```
 The `eval rate` value for this run on OrangePi 5 Plus was 2.6 tokens per second.
-The text update at this rate is too slow to my attention.  I think a 
-distilled R1 model size in between 1.5B and 7B (say 3B or 4B) could be a good 
+The text update at this rate is too slow to my attention.  I think a
+distilled R1 model size in between 1.5B and 7B (say 3B or 4B) could be a good
 trade-off for this CPU.
 
 ## Chat script
 
-This section describes a chat example with several stored prompts using Ollama's 
-Python API.  It is more convenient for testing than using the `ollama run` 
-command.  Runs on Terminal command line.  
+This section describes a chat example with several stored prompts using Ollama's
+Python API.  It is more convenient for testing than using the `ollama run`
+command.  Runs on Terminal command line.
 
 ### Installation
 
@@ -384,7 +384,7 @@ python3 -m pip install -r deepseek_opi5plus/requirements.txt
 
 ### Run
 
-In this example a sequence of stored prompts are passed to the model.  This 
+In this example a sequence of stored prompts are passed to the model.  This
 method creates context history for the later answers.
 ```bash
 cd
@@ -392,12 +392,12 @@ cd deepseek_opi5plus/chat
 python3 main.py
 ```
 The model generates reasoning and answers with context.  The rate of the model
-is printed in tokens per second including the session average rate.  See 
+is printed in tokens per second including the session average rate.  See
 [chat folder README](/chat/README.md#result) for more information.
 
 ## Web server
 
-This example provides a local HTML page for user input with the DeepSeek-R1 1.5B 
+This example provides a local HTML page for user input with the DeepSeek-R1 1.5B
 model.
 
 Run the web server.
@@ -412,14 +412,14 @@ Navigate to `http://127.0.0.1:5000` in a browser for the chat session (or the
 provided IP address with `--network` option).  Tested with Chromium browser on
 Ubuntu 22.04 on OrangePi 5, and in Safari browser on MacOS.
 
-<img src="/images/chat_browser.png" alt="Web browser interface"/>
+<img src="./images/chat_browser.png" alt="Web browser interface"/>
 
 The browser web page is updated after the model has finished generating text.
 Context history is preserved during the session.
 
 ### Other models
 
-You can select a different Ollama supported model using `--model` option.  First 
+You can select a different Ollama supported model using `--model` option.  First
 make the model available by pulling it then run the server.
 ```bash
 ollama pull deepseek-r1:7b
