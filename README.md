@@ -22,6 +22,7 @@ installation.
     - [Installation](#installation)
     - [Run](#run)
   - [Web server](#web-server)
+    - [Other models](#other-models)
 - [References](#references)
 - [Next steps](#next-steps)
 
@@ -251,6 +252,10 @@ rm -f .ollama/history
 This section contains several different examples showing the usage of a local
 version of DeepSeek-R1 model.
 
+> [!TIP]
+> Users looking for desktop and cloud applications to run models might
+> take a look at [AnythingLLM](https://anythingllm.com).
+
 ## Temperature (experimental)
 
 DeepSeek documentation recommends changing 
@@ -403,14 +408,24 @@ source ./venv_ollama/bin/activate
 python3 deepseek_opi5plus/browser/server.py
 ```
 
-Navigate to `http://127.0.0.1:5000` in a browser for the chat session.  Tested
-with Chromium browser on Ubuntu 22.04 on OrangePi 5, and in Safari browser on 
-MacOS.
+Navigate to `http://127.0.0.1:5000` in a browser for the chat session (or the
+provided IP address with `--network` option).  Tested with Chromium browser on
+Ubuntu 22.04 on OrangePi 5, and in Safari browser on MacOS.
 
 <img src="/images/chat_browser.png" alt="Web browser interface"/>
 
-The browser web page is updated after the model has finished generating text.  
+The browser web page is updated after the model has finished generating text.
 Context history is preserved during the session.
+
+### Other models
+
+You can select a different Ollama supported model using `--model` option.  First 
+make the model available by pulling it then run the server.
+```bash
+ollama pull deepseek-r1:7b
+
+python3 deepseek_opi5plus/browser/server.py --model "deepseek-r1:7b"
+```
 
 # References
 
