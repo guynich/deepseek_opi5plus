@@ -253,8 +253,10 @@ This section contains several different examples showing the usage of a local
 version of DeepSeek-R1 model.
 
 > [!TIP]
-> Users looking for desktop and cloud applications to run models might
-> take a look at [AnythingLLM](https://anythingllm.com).
+> Users looking for desktop and cloud applications to run models might take a
+> look at [AnythingLLM](https://anythingllm.com).  There is a docker version
+> available for ARM: I describe an installation
+> [here](https://github.com/guynich/anythingllm_on_arm).
 
 ## Temperature (experimental)
 
