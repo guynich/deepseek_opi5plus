@@ -23,6 +23,7 @@ installation.
     - [Run](#run)
   - [Web server](#web-server)
     - [Other models](#other-models)
+  - [AnythingLLM](#anythingllm)
 - [References](#references)
 - [Next steps](#next-steps)
 
@@ -252,12 +253,6 @@ rm -f .ollama/history
 This section contains several different examples showing the usage of a local
 version of DeepSeek-R1 model.
 
-> [!TIP]
-> Users looking for desktop and cloud applications to run models might take a
-> look at [AnythingLLM](https://anythingllm.com).  There is a docker version
-> available for ARM: I describe an installation
-> [here](https://github.com/guynich/anythingllm_on_arm).
-
 ## Temperature (experimental)
 
 DeepSeek documentation recommends changing
@@ -428,6 +423,18 @@ ollama pull deepseek-r1:7b
 
 python3 deepseek_opi5plus/browser/server.py --model "deepseek-r1:7b"
 ```
+
+## AnythingLLM
+
+[AnythingLLM](https://anythingllm.com) provides an LLM chat interface.  The
+current desktop version does not support ARM.  There is a docker version available for ARM that runs a web server.
+
+I describe single board computer installation of AnythingLLM docker for ARM on
+Ubuntu
+[in another repo](https://github.com/guynich/anythingllm_on_arm).
+
+I saw the DeepSeek-R1 LLM model rate slows due to CPU contention with browser
+processes and describe a headless configuration as mitigation.
 
 # References
 
