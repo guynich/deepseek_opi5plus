@@ -24,6 +24,7 @@ installation.
   - [Web server](#web-server)
     - [Other models](#other-models)
   - [AnythingLLM](#anythingllm)
+  - [AI agent](#ai-agent)
 - [References](#references)
 - [Next steps](#next-steps)
 
@@ -436,6 +437,24 @@ Ubuntu
 I saw the DeepSeek-R1 LLM model rate slows due to CPU contention with browser
 processes and describe a headless configuration as mitigation.
 
+## AI agent
+
+This script uses the DuckDuckGo search engine to find recent news articles
+related to a given topic, extracts text from the articles, and summarizes them
+using a locally running DeepSeek-R1 reasoning model.  It is designed to help
+gather and summarize news information on a specific topic.
+
+This example was adapted from OpenAI ChatGPT suggested code.
+
+Install the latest requirements.  Run the AI agent.
+```console
+cd
+source ./venv_ollama/bin/activate
+python3 -m pip install -r ./deepseek_opi5plus/requirements.txt
+
+python3 ./deepseek_opi5plus/ai_agent/main.py
+```
+
 # References
 
 * Ollama.
@@ -460,4 +479,5 @@ processes and describe a headless configuration as mitigation.
 * [x] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
 * [x] Add Ollama Modefile with temperature.
 * [x] Adds local web server using DeepSeek-R1 1.5B model for browser chat session.
+* [x] Add AI agent example.
 * [ ] Update chat/README for OrangePi 5 run with `"seed": 42` in chat script.
