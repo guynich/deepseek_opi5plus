@@ -158,7 +158,6 @@ generate an answer.  For example here is a simple mathematics problem to sum
 3 and 2.
 ```bash
 >>> What is the sum of 3 + 2 ?
-<think>
 Okay, let's tackle this problem step by step. I'm trying to find the sum of 3 plus 2.
 
 First, I need to understand what addition means. Addition is like combining two numbers to get a total. So, when I see "3 + 2,"
@@ -180,7 +179,6 @@ To make sure I'm correct, I'll do the math again:
 Yes, that's right.
 
 Therefore, the sum of 3 and 2 is **5**.
-</think>
 
 To solve the addition problem \(3 + 2\), follow these steps:
 
@@ -201,11 +199,11 @@ To solve the addition problem \(3 + 2\), follow these steps:
 >>> Send a message (/? for help)
 ```
 
-The text between `<think>` and `</think>` shows the "chain-of-thought" or
+The text between `think` and `/think` shows the "chain-of-thought" or
 reasoning of the model as it examines the problem.  It is not deterministic and
 the reasoning text will vary from run to run with the same prompt.
 
-The final text after `</think>` is the model's answer to the prompt and
+The final text after `/think` is the model's answer to the prompt and
 produces the expected numerical result `5`.  The text in the answer will
 vary from run to run.  In my testing the numerical result of 5 is consistent.
 
@@ -477,7 +475,7 @@ python3 ./deepseek_opi5plus/ai_agent/main.py
 * [x] Print chat script session in a stream
 * [x] Try larger size DeepSeek-R1 "7B" model (4.7GiB download) on the OrangePi 5 Plus.
 * [x] Try [OrangePi 3B](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-3B.html) single board computer (~50 USD retail with 4GB RAM) with microSD card.
-* [x] Add Ollama Modefile with temperature.
+* [x] Add Ollama Modelfile with temperature.
 * [x] Adds local web server using DeepSeek-R1 1.5B model for browser chat session.
 * [x] Add AI agent example.
 * [ ] Update chat/README for OrangePi 5 run with `"seed": 42` in chat script.
